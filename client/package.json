@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel app-src -d app --source-maps",
-    "watch": "babel app-src -d app --source-maps --watch"
+    "build-dev": "webpack --config webpack.config.js"
   },
   "author": "",
   "license": "ISC",
