@@ -21,6 +21,11 @@ Handle env variables cross plataform (win, linux, mac)
 In the `build-prod` npm task, add `cross-env NODE_ENV=production` before all.
 `"build-prod": "cross-env NODE_ENV=production webpack --config webpack.config.js"` 
 
+* Webpack dev server
+`npm i --save-dev webpack-dev-server`
+Then, add a new NPM script
+`"start": "webpack-dev-server"`
+
 ## webpack.config options
 `entry`
 Apps entry point
