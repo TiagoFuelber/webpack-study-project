@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "reflect-metadata": "^0.1.10"
   },
   "devDependencies": {
