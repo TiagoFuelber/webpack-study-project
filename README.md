@@ -76,3 +76,8 @@ Install url-loader and file-loader from NPM and then add the following config:
 ```
 
 ##How to get rid of FOUC (Flash Of Unstyled Content)
+Install `extract-text-webpack-plugin@3.0.0 --save-dev`. Do not install lower version, because it's buggy.
+
+Import into webpack.config
+`const extractTextPlugin = require('extract-text-webpack-plugin');`
+
