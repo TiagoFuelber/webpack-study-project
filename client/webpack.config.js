@@ -29,7 +29,10 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader'
+                use: extractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: 'css-loader'
+                })
             },
             { 
                 test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, 

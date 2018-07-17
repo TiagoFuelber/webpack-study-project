@@ -81,3 +81,25 @@ Install `extract-text-webpack-plugin@3.0.0 --save-dev`. Do not install lower ver
 Import into webpack.config
 `const extractTextPlugin = require('extract-text-webpack-plugin');`
 
+Add this before `module.exports`
+```
+let plugins = [];
+
+plugins.push(new extractTextPlugin('styles.css'));
+
+```
+
+Change the CSS loader: 
+```
+{
+    test: /\.css$/,
+    use: extractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: 'css-loader'
+    })
+}
+```
+
+And add a link to the css file into head on index.html
+
+
