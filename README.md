@@ -74,3 +74,5 @@ Install url-loader and file-loader from NPM and then add the following config:
     loader: 'url-loader?limit=10000&mimetype=image/svg+xml' 
 }   
 ```
+
+##How to get rid of FOUC (Flash Of Unstyled Content)
