@@ -102,4 +102,20 @@ Change the CSS loader:
 
 And add a link to the css file into head on index.html
 
+##How to minify CSS for production
+Install `cssnano` and `optimize-css-assets-webpack-plugin` --save-dev
+
+In webpack.config, add this config into the production validation: 
+```
+plugins.push(new optimizeCSSAssetsPlugin({
+    cssProcessor: require('cssnano'),
+    cssProcessorOptions: {
+        discardComments: {
+            removeAll: true
+        }
+    },
+    canPrint: true 
+}))
+``` 
+
 
