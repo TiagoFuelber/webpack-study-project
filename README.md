@@ -116,6 +116,20 @@ plugins.push(new optimizeCSSAssetsPlugin({
     },
     canPrint: true 
 }))
-``` 
+```
+
+## How to set a module to be global (jquery, for example)
+
+In webpack.config, import webpack: 
+`const webpack = require('webpack')`
+
+and then, add the desired plugin like this: 
+```
+plugins.push(new webpack.ProvidePlugin({
+    '$': 'jquery/dist/jquery.js',
+    'jQuery': 'jquery/dist/jquery.js'
+}));
+```
+
 
 
