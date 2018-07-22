@@ -139,6 +139,27 @@ Inside production `if`, add this:
 ```
 if (process.env.NODE_ENV == 'production') {
     plugins.push(new webpack.optimize.ModuleConcatenationPlugin())
+
+```
+    
+## How to split into multiple bundles
+You can split into app and vendor, for example.
+
+``` webpack.config
+plugins.push(new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor',
+    filename: 'vendor.bundle.js'
+}));
 ```
 
+```
+entry:  {
+    app: './app-src/app.js',
+    vendor: ['jquery', 'bootstrap', 'reflect-metadata', ]
+},
+``` 
 
+```index.html
+<script src="dist/vendor.bundle.js"></script>
+<script src="dist/bundle.js"></script>
+``` 
