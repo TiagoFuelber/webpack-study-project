@@ -126,10 +126,19 @@ In webpack.config, import webpack:
 and then, add the desired plugin like this: 
 ```
 plugins.push(new webpack.ProvidePlugin({
-    '$': 'jquery/dist/jquery.js',
+    '$': 'jquery/dist/jquery.js',acka
     'jQuery': 'jquery/dist/jquery.js'
 }));
 ```
 
+## Build optimizing with scope hoisting
+This optimization is for production env. 
+
+Inside production `if`, add this: 
+
+```
+if (process.env.NODE_ENV == 'production') {
+    plugins.push(new webpack.optimize.ModuleConcatenationPlugin())
+```
 
 
