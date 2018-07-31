@@ -163,3 +163,27 @@ entry:  {
 <script src="dist/vendor.bundle.js"></script>
 <script src="dist/bundle.js"></script>
 ``` 
+
+## How to autogenerate index.html with all the script and style imports
+* Install `html-webpack-plugin`
+
+`npm install html-webpack-plugin@2.29.0 --save-dev` 
+
+* Then, transform the actual `index.html` into a template for webpack, removing all script and link tags and renaming it to `main.html`
+
+* Then, remove the `publicPath: 'dist'` config from webpack, because from now the `index.html` will be inside the dist folder.
+
+* Finally, start the plugin in webpack.config: 
+
+```
+plugins.push(new HtmlWebpackPlugin({
+    hash: true,
+    minify: {
+        html5: true,
+        collapseWhitespace: true,
+        removeComments: true,
+    },    
+    filename: 'index.html',
+    template: __dirname + '/main.html'
+}));
+```
