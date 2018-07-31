@@ -187,3 +187,14 @@ plugins.push(new HtmlWebpackPlugin({
     template: __dirname + '/main.html'
 }));
 ```
+
+## Module lazy-loading and code-splitting
+To let a module be lazy-loaded:
+* First, remove the export in the `index.js` of the folder. This technique is called 'barrel'.
+* Then, remove all the static imports in all files using that module.
+* Install this babel plugin: `npm install babel-plugin-syntax-dynamic-import@6.18.0 --save-dev`, and add to the babel.rc plugins list.
+* Use `await`, `desconstruct` and `import` to load the file at the point it is going to be used: 
+```
+    const { NegociacaoService } = await import('../domain/negociacao/NegociacaoService');
+    const service = new NegociacaoService();
+```

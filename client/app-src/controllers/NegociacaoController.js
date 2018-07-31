@@ -1,4 +1,4 @@
-import { Negociacoes, NegociacaoService, Negociacao } from '../domain/index.js';
+import { Negociacoes, Negociacao } from '../domain/index.js';
 import { NegociacoesView, MensagemView, Mensagem, DateConverter } from '../ui/index.js';
 import { getNegociacaoDao, Bind, getExceptionMessage, debounce, controller, bindEvent } from '../util/index.js';
 
@@ -20,8 +20,6 @@ export class NegociacaoController {
             new MensagemView('#mensagemView'),
             'texto'
         );
-
-        this._service = new NegociacaoService();
 
         this._init();
     }
@@ -73,9 +71,11 @@ export class NegociacaoController {
     @bindEvent('click', '#botao-importa')
     @debounce()
     async importaNegociacoes() {
-
+        const { NegociacaoService } = await import('../domain/negociacao/NegociacaoService');
+        const service = new NegociacaoService();
+        
         try {
-            const negociacoes = await this._service.obtemNegociacoesDoPeriodo();
+            const negociacoes = await service.obtemNegociacoesDoPeriodo();
             console.log(negociacoes);
             negociacoes.filter(novaNegociacao =>
 
