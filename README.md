@@ -198,3 +198,20 @@ To let a module be lazy-loaded:
     const { NegociacaoService } = await import('../domain/negociacao/NegociacaoService');
     const service = new NegociacaoService();
 ```
+
+##How to set some dev and production consts
+* Define the const in webpack.config for dev and for production: 
+```
+const SERVICE_URL = JSON.stringify('http://localhost:3000');
+
+if (process.env.NODE_ENV == 'production') {
+    SERVICE_URL = JSON.stringify('http://endereco-da-api');
+}
+```
+
+* Then configure the plugin: 
+```
+plugins.push(new webpack.DefinePlugin({ SERVICE_URL }));
+
+``` 
+* Now it's possible to use `SERVICE_URL` at any point inside the aplication.
